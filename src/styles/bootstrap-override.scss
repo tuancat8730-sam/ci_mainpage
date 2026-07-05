@@ -1,0 +1,15 @@
+// Bootstrap variable overrides — must come BEFORE @import
+$primary: #0275d8;
+$success: #2ea055;
+$danger: #dc3545;
+$border-radius: 0.5rem;
+$border-radius-lg: 0.75rem;
+$font-family-sans-serif: 'Inter', system-ui, -apple-system, sans-serif;
+$headings-font-weight: 700;
+$btn-font-weight: 600;
+$navbar-dark-color: rgba(255, 255, 255, 0.9);
+$navbar-dark-hover-color: #fff;
+$card-border-color: rgba(0, 0, 0, 0.08);
+$card-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+@import 'bootstrap/scss/bootstrap';

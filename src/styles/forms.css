@@ -1,0 +1,11 @@
+.form-card {
+  background: #fff;
+  border-radius: var(--border-radius-lg, 0.75rem);
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem;
+}
+
+.form-success {
+  text-align: center;
+  padding: 3rem 1rem;
+}

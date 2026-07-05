@@ -1,0 +1,23 @@
+/* Mobile-first responsive overrides — loaded last, wins the cascade. */
+
+/* ── GLOBAL ── */
+@media (max-width: 767.98px) {
+  :root { --section-py: 3.5rem; }
+  .section-header { margin-bottom: 2.5rem; }
+  .section-subtitle { font-size: 0.97rem; }
+}
+@media (max-width: 575.98px) {
+  :root { --section-py: 3rem; }
+  .section-header { margin-bottom: 2rem; }
+}
+
+/* ── HERO ── */
+@media (max-width: 767.98px) {
+  .hero-section { padding: 3.5rem 0; text-align: center; }
+  .hero-subtitle { margin-left: auto; margin-right: auto; }
+}
+
+/* ── TOUCH DEVICES: disable hover-only interactions ── */
+@media (hover: none) {
+  .card:hover { transform: none; }
+}

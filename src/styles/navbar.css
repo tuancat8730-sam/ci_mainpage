@@ -1,0 +1,22 @@
+.navbar-ci {
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  padding: 0.75rem 0;
+}
+
+.brand-text {
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1.1;
+  color: var(--color-dark-text);
+}
+
+.navbar-phone {
+  color: var(--color-dark-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.navbar-right-group {
+  margin-left: 1rem;
+}

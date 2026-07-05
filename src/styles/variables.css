@@ -1,0 +1,21 @@
+:root {
+  --color-primary: #0275d8;
+  --color-primary-dark: #025aa5;
+  --color-primary-light: #4d9de0;
+  --color-accent: #f0ad4e;
+  --color-white: #ffffff;
+  --color-light-bg: #f2f8fd;
+  --color-dark-text: #1c2733;
+  --color-gray-text: #5c6b7a;
+  --color-star: #f5c518;
+  --color-border: rgba(0, 0, 0, 0.08);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.15);
+
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --section-py: 5rem;
+}
