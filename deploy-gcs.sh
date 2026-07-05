@@ -1,26 +1,57 @@
 #!/bin/bash
-# Deploy the production build to a Google Cloud Storage static website bucket.
-#
-# Before first use, fill in GCS_BUCKET and GCP_PROJECT below (or export them
-# as environment variables). The bucket must be configured to serve
-# index.html as both the main page and the 404 page, so client-side routing
-# (React Router) works for direct links to any route.
+# ============================================================
+# Capital Irrigation (ci_mainpage) — Deploy to Firebase Hosting
+# Usage: bash deploy-gcs.sh
+# ============================================================
 
 set -e
 
-GCS_BUCKET="${GCS_BUCKET:?Set GCS_BUCKET, e.g. export GCS_BUCKET=ci-mainpage-prod}"
-GCP_PROJECT="${GCP_PROJECT:?Set GCP_PROJECT, e.g. export GCP_PROJECT=my-gcp-project-id}"
+WEB_DIR="/home/tuancnh/code/ci_mainpage"
 
-echo "==> Building..."
+echo ""
+echo "=========================================="
+echo "  ci_mainpage — Firebase Hosting Deploy"
+echo "=========================================="
+echo ""
+
+# ── Step 1: Build ──────────────────────────────────────────
+echo "→ Building production bundle..."
+cd "$WEB_DIR"
 npm run build
+echo "  ✓ Build complete → dist/"
 
-echo "==> Syncing dist/ to gs://${GCS_BUCKET}..."
-gcloud storage rsync dist "gs://${GCS_BUCKET}" --recursive --delete-unmatched-destination-objects --project "${GCP_PROJECT}"
+# ── Step 2: Check Firebase CLI ─────────────────────────────
+echo ""
+echo "→ Checking Firebase CLI..."
+if ! command -v firebase &>/dev/null; then
+  echo "  Firebase CLI not found. Installing..."
+  npm install -g firebase-tools
+fi
+echo "  ✓ Firebase CLI: $(firebase --version)"
 
-echo "==> Configuring website (index.html as main page and 404 page)..."
-gcloud storage buckets update "gs://${GCS_BUCKET}" \
-  --web-main-page-suffix=index.html \
-  --web-error-page=index.html \
-  --project "${GCP_PROJECT}"
+# ── Step 3: Check auth ─────────────────────────────────────
+echo ""
+echo "→ Checking authentication..."
+if ! firebase projects:list &>/dev/null; then
+  echo "  Not logged in. Please run: firebase login"
+  exit 1
+fi
+echo "  ✓ Authenticated"
 
-echo "==> Deploy complete."
+# ── Step 4: Deploy to Firebase Hosting ─────────────────────
+echo ""
+echo "→ Deploying to Firebase Hosting..."
+firebase deploy --only hosting
+echo "  ✓ Deploy complete"
+
+# ── Step 5: Print URLs ─────────────────────────────────────
+echo ""
+echo "=========================================="
+echo "  ✅ DEPLOYMENT COMPLETE!"
+echo "=========================================="
+echo ""
+echo "  Firebase URL:   https://ci-mainpage.web.app"
+echo ""
+echo "  To update: just run this script again"
+echo "=========================================="
+echo ""
