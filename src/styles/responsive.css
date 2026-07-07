@@ -12,9 +12,30 @@
 }
 
 /* ── HERO ── */
+@media (max-width: 991.98px) {
+  /* iOS Safari can't do background-attachment: fixed */
+  .hero-section { background-attachment: scroll; }
+}
 @media (max-width: 767.98px) {
-  .hero-section { padding: 3.5rem 0; text-align: center; }
+  .hero-section { min-height: 100svh; padding: 6rem 0 3rem; text-align: center; }
   .hero-subtitle { margin-left: auto; margin-right: auto; }
+  .hero-cta-group,
+  .hero-trust-row { justify-content: center; }
+}
+
+/* ── VIDEO TESTIMONIAL SLIDER ── */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .video-slider-slide { width: 220px; }
+  .video-slider-track { padding: 1rem calc(50% - 110px); }
+}
+/* From tablet up: show exactly 3 slides at once, no edge peek */
+@media (min-width: 768px) {
+  .video-slider-track { padding: 1rem 0; }
+  .video-slider-slide { flex: 0 0 calc((100% - 2rem) / 3); width: auto; }
+}
+@media (min-width: 992px) {
+  .video-slider { padding: 0 3rem; }
+  .video-slider-arrow { width: 44px; height: 44px; font-size: 1rem; }
 }
 
 /* ── TOUCH DEVICES: disable hover-only interactions ── */
